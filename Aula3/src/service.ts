@@ -1,4 +1,10 @@
 
+/*
+  ARQUIVO ANTIGO DO EXERCÍCIO 5
+
+  O servidor atualizado está em server.ts.
+  O conteúdo abaixo foi mantido apenas para comparar a versão antes e depois.
+
 import express, { Request, Response } from "express";
 
 interface IUser{
@@ -117,3 +123,7 @@ app.delete("/users/:id", (request: Request, response: Response): void => {
 app.listen(port, (): void => {
     console.log(`Servidor iniciado em http://localhost:${port}`);
 } )
+*/
+
+// Faz o TypeScript reconhecer este arquivo antigo como um módulo vazio.
+export {};

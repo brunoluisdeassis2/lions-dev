@@ -1,0 +1,13 @@
+{
+  "name": "aula4-lista-paises",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsc && http-server . -p 3000 -c-1",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "typescript": "^5.9.2"
+  }
+}

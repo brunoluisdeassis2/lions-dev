@@ -89,3 +89,40 @@ Validacao de tipo pergunta se o dado possui o formato esperado. Regra de
 negocio pergunta se um dado do tipo correto e permitido pela aplicacao. Por
 exemplo: primeiro verificamos se `price` e numero; depois verificamos se ele nao
 e negativo.
+
+## Exercicios 11 e 12 - RequestHandler e Repository
+
+As rotas de usuarios e produtos agora usam `RequestHandler`. Cada handler
+informa os tipos dos parametros da URL, da resposta, do corpo recebido e da
+query. Isso ajuda o TypeScript a encontrar erros enquanto escrevemos o codigo.
+
+A tipagem nao substitui a validacao. Um cliente ainda pode enviar um JSON
+errado durante a execucao, por isso as verificacoes dos dados continuam nos
+Services.
+
+### Organizacao das responsabilidades
+
+- Controller: recebe a requisicao, chama o Service e envia a resposta HTTP.
+- Service: valida os dados e aplica as regras da aplicacao.
+- Repository: guarda, busca, altera e remove os dados.
+
+O fluxo de uma requisicao de usuarios e:
+
+```text
+Cliente -> Controller -> Service -> Repository
+```
+
+O `RepositorioDeUsuarios` usa um array em memoria. Essa foi a opcao escolhida
+por ser a mais simples para estudar. Os usuarios criados desaparecem quando o
+servidor e reiniciado.
+
+Os metodos do Repository retornam `Promise`. Por isso, o Service e o Controller
+de usuarios usam `async` e `await`. Esse contrato permite trocar o array por um
+arquivo ou banco de dados no futuro sem mudar as rotas.
+
+Tambem e possivel filtrar usuarios pelo estado:
+
+```text
+GET /users?active=true
+GET /users?active=false
+```

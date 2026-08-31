@@ -1,10 +1,12 @@
 // Importamos o Express e os tipos usados nas rotas.
-import express, { Request, Response } from "express";
+import express, { NextFunction, Request, Response } from "express";
 
 // Importamos as partes que criamos para os exercícios 7 e 8.
 import { loggerMiddleware } from "./middlewares/logger.middleware";
+import { tratadorDeErros } from "./middlewares/tratador-erros.middleware";
 import { IUser } from "./models/user";
 import { UserService } from "./services/user.service";
+import { ServicoDeProdutos } from "./services/servico-produtos";
 
 // Criamos o servidor Express e escolhemos a porta 3000.
 const app = express();
@@ -18,6 +20,9 @@ app.use(loggerMiddleware);
 
 // Criamos um único objeto que guardará e manipulará os usuários.
 const userService = new UserService();
+
+// Este objeto guarda e manipula os produtos enquanto o servidor estiver ligado.
+const servicoDeProdutos = new ServicoDeProdutos();
 
 // Verifica os dados obrigatórios usados para criar um usuário.
 function usuarioNovoValido(user: IUser): boolean {
@@ -130,6 +135,91 @@ app.delete("/users/:id", function (request: Request, response: Response): void {
   // O status 204 informa que a exclusão funcionou e não envia um corpo.
   response.status(204).send();
 });
+
+// GET /products devolve todos os produtos cadastrados.
+app.get("/products", function (requisicao: Request, resposta: Response): void {
+  const produtos = servicoDeProdutos.listar();
+  resposta.status(200).json(produtos);
+
+  void requisicao;
+});
+
+// GET /products/:id busca um unico produto.
+app.get(
+  "/products/:id",
+  function (
+    requisicao: Request,
+    resposta: Response,
+    proximo: NextFunction,
+  ): void {
+    try {
+      const id = Number(requisicao.params.id);
+      const produto = servicoDeProdutos.buscar(id);
+      resposta.status(200).json(produto);
+    } catch (erro: unknown) {
+      proximo(erro);
+    }
+  },
+);
+
+// POST /products cria um produto com os dados enviados no corpo.
+app.post(
+  "/products",
+  function (
+    requisicao: Request,
+    resposta: Response,
+    proximo: NextFunction,
+  ): void {
+    try {
+      const produtoCriado = servicoDeProdutos.criar(requisicao.body);
+      resposta.status(201).json(produtoCriado);
+    } catch (erro: unknown) {
+      proximo(erro);
+    }
+  },
+);
+
+// PUT /products/:id substitui os dados de um produto existente.
+app.put(
+  "/products/:id",
+  function (
+    requisicao: Request,
+    resposta: Response,
+    proximo: NextFunction,
+  ): void {
+    try {
+      const id = Number(requisicao.params.id);
+      const produtoAtualizado = servicoDeProdutos.atualizar(
+        id,
+        requisicao.body,
+      );
+      resposta.status(200).json(produtoAtualizado);
+    } catch (erro: unknown) {
+      proximo(erro);
+    }
+  },
+);
+
+// DELETE /products/:id apaga um produto.
+app.delete(
+  "/products/:id",
+  function (
+    requisicao: Request,
+    resposta: Response,
+    proximo: NextFunction,
+  ): void {
+    try {
+      const id = Number(requisicao.params.id);
+      servicoDeProdutos.remover(id);
+      resposta.status(204).send();
+    } catch (erro: unknown) {
+      proximo(erro);
+    }
+  },
+);
+
+// O middleware de erro fica depois das rotas para receber os erros delas.
+app.use(tratadorDeErros);
 
 // Liga o servidor e mostra no terminal o endereço para acesso.
 app.listen(port, function (): void {

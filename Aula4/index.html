@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Configurações básicas da página. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Países</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Conteúdo principal da aplicação. -->
+    <main class="container">
+      <h1>Lista de Países</h1>
+      <p>Pesquise um país pelo nome ou escolha uma região.</p>
+
+      <!-- Controles usados para pesquisar e filtrar os países. -->
+      <section class="filtros">
+        <label for="busca">Nome do país</label>
+        <input id="busca" type="text" placeholder="Ex.: Brazil" />
+
+        <label for="regiao">Região</label>
+        <select id="regiao">
+          <option value="">Todas as regiões</option>
+          <option value="Africa">África</option>
+          <option value="Americas">Américas</option>
+          <option value="Asia">Ásia</option>
+          <option value="Europe">Europa</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Antarctic">Antártida</option>
+        </select>
+      </section>
+
+      <!-- Mensagem de carregamento, erro ou quantidade encontrada. -->
+      <p id="mensagem" class="mensagem">Carregando países...</p>
+
+      <!-- O TypeScript adicionará os cartões de países nesta área. -->
+      <section id="lista-paises" class="lista-paises"></section>
+    </main>
+
+    <!-- O navegador executa o JavaScript criado a partir do arquivo app.ts. -->
+    <script src="app.js"></script>
+  </body>
+</html>

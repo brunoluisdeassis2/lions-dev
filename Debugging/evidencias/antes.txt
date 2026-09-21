@@ -1,0 +1,31 @@
+
+> exercicios-debugging@1.0.0 antes
+> ts-node investigacao/antes.ts
+
+{ index: 0, preco: 40, subtotal: 0 }
+{ index: 1, preco: 60, subtotal: 40 }
+{ index: 2, preco: undefined, subtotal: 100 }
+Trace: Primeiro valor inesperado
+    at calculateTotal (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/investigacao/antes.ts:9:46)
+    at investigar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/investigacao/antes.ts:17:42)
+    at Object.<anonymous> (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/investigacao/antes.ts:47:1)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module.m._compile (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Object.require.extensions.<computed> [as .ts] (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+Exercício 1, resultado: NaN
+Exercício 2, divisão por zero: Infinity
+Exercício 3: [ 33.33, 33.33 ]
+Exercício 4: entre estas marcas deveria haver início e fim.
+Fim das marcas: nenhuma linha do logger.
+Status real: /health 200
+{ method: 'GET', route: '/rota-inexistente', status: 200, duration: 0 }
+Status real: /rota-inexistente 404
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice

@@ -1,0 +1,8 @@
+Inspeção real pelo Node Inspector no JavaScript compilado; interface do VS Code não utilizada.
+Breakpoint: {"number":1,"quantity":3,"installmentValue":33.33,"installments":[],"length":0}
+Call Stack: buildInstallments <-
+Breakpoint: {"number":2,"quantity":3,"installmentValue":33.33,"installments":[33.33],"length":1}
+Call Stack: buildInstallments <-
+Breakpoint: {"number":3,"quantity":3,"installmentValue":33.33,"installments":[33.33,33.33],"length":2}
+Call Stack: buildInstallments <-
+Resultado: [ 33.33, 33.33, 33.33 ]

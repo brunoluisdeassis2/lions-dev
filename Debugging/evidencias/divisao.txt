@@ -1,0 +1,17 @@
+Resultado: 5
+Erro 400 Não é possível dividir por zero.
+Erro 400 Envie um objeto com numerator e denominator.
+Erro 400 Os dois campos precisam ser números.
+Erro 400 Não envie Infinity ou NaN.
+Log interno: Error: Falha simulada de leitura
+    at get numerator [as numerator] (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/src/exercicio2.js:65:39)
+    at validarEntrada (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/src/exercicio2.js:34:25)
+    at execute (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/src/exercicio2.js:44:25)
+    at Object.<anonymous> (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/src/exercicio2.js:65:5)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49
+Erro 500: não foi possível realizar a operação.

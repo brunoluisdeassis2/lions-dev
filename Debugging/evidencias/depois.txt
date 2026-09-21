@@ -1,0 +1,24 @@
+
+> exercicios-debugging@1.0.0 test
+> ts-node src/verificar.ts
+
+{"level":"info","message":"inicio do processamento","orderId":"1","timestamp":"2026-09-21T22:00:34.958Z"}
+{"level":"info","message":"fim do processamento","orderId":"1","timestamp":"2026-09-21T22:00:34.959Z"}
+{"level":"info","message":"inicio do processamento","orderId":"inexistente","timestamp":"2026-09-21T22:00:34.959Z"}
+{"level":"error","message":"Pedido não encontrado","orderId":"inexistente","stack":"Error: Pedido não encontrado\n    at findOrder (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio4.ts:5:30)\n    at processOrder (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio4.ts:12:25)\n    at verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar.ts:26:36)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2026-09-21T22:00:34.962Z"}
+{"level":"info","message":"fim do processamento","orderId":"inexistente","timestamp":"2026-09-21T22:00:34.962Z"}
+{"cancelada":false,"durationMs":2.30866,"level":"info","message":"request","method":"GET","requestId":"746adf1f-ef6b-47b0-a7e6-b92fb8e94f38","route":"/health","statusCode":200,"timestamp":"2026-09-21T22:00:34.983Z"}
+Verificado: /health 200
+{"cancelada":false,"durationMs":0.493462,"level":"info","message":"request","method":"GET","requestId":"df32483d-4cd7-48af-85f3-9ef3f78f109c","route":"rota-nao-encontrada","statusCode":404,"timestamp":"2026-09-21T22:00:34.990Z"}
+Verificado: /rota-inexistente 404
+{"cancelada":false,"durationMs":0.473442,"level":"info","message":"request","method":"GET","requestId":"0ee356c6-f082-404e-ac92-aba864053283","route":"/usuarios/:id","statusCode":200,"timestamp":"2026-09-21T22:00:34.991Z"}
+Verificado: /usuarios/42 200
+{"cancelada":false,"durationMs":1.329835,"erro":{"message":"Falha simulada na rota","stack":"Error: Falha simulada na rota\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:10:32\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)\n    at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at read (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/read.js:53:5)"},"level":"error","message":"request","method":"GET","requestId":"e2856c71-fa12-4476-addc-2debf45985e2","route":"/erro","statusCode":500,"timestamp":"2026-09-21T22:00:34.994Z"}
+Verificado: /erro 500
+{"cancelada":false,"durationMs":200.720363,"level":"info","message":"request","method":"GET","requestId":"f18fac93-e940-4819-b444-b7f0b18cb6c8","route":"/lento","statusCode":200,"timestamp":"2026-09-21T22:00:35.196Z"}
+Verificado: /lento 200
+{"cancelada":false,"durationMs":100.950464,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"8a4101d1-6e30-4c11-978a-8254662d206d","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:00:35.298Z"}
+Verificado: /crash 500
+{"cancelada":false,"durationMs":100.794348,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"77dd3461-53bb-4054-85b8-ac9e66ae63d1","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:00:35.400Z"}
+Verificado: /crash 500
+Todos os cenários passaram.

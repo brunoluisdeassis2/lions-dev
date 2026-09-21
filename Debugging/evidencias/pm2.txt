@@ -1,0 +1,255 @@
+
+$ pm2 --version
+[PM2] Spawning PM2 daemon with pm2_home=/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2
+[PM2] PM2 Successfully daemonized
+6.0.14
+
+$ pm2 start dist/investigacao/crash-antes.js --name api --restart-delay 500
+[PM2] Starting /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/crash-antes.js in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15502    │ 0s     │ 0    │ online    │ 0%       │ 27.9mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 flush api
+[PM2] Flushing:
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out.log
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error.log
+[PM2] Logs flushed
+
+$ pm2 list
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15502    │ 1s     │ 0    │ online    │ 0%       │ 60.2mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15502, "restarts": 0, "uptime_inicio": 1790028129778, "cpu": 0, "memoria": 63156224}
+GET /crash => 200 {"ok":true}
+
+$ pm2 list
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15550    │ 1s     │ 1    │ online    │ 0%       │ 58.6mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15550, "restarts": 1, "uptime_inicio": 1790028132686, "cpu": 0, "memoria": 61407232}
+
+$ pm2 logs api --err --lines 100 --nostream
+[TAILING] Tailing last 100 lines for [api] process (change the value with --lines option)
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error.log last 100 lines:
+0|api      | Error: falha ao processar a fila
+0|api      |     at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/investigacao/crash-antes.ts:5:28)
+0|api      |     at listOnTimeout (node:internal/timers:581:17)
+0|api      |     at processTimers (node:internal/timers:519:7)
+
+
+$ pm2 describe api
+ Describing process with id 0 - name api
+┌───────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ status            │ online                                                                                          │
+│ name              │ api                                                                                             │
+│ namespace         │ default                                                                                         │
+│ version           │ 1.0.0                                                                                           │
+│ restarts          │ 1                                                                                               │
+│ uptime            │ 1s                                                                                              │
+│ script path       │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/crash-antes.js │
+│ script args       │ N/A                                                                                             │
+│ error log path    │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error.log          │
+│ out log path      │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out.log            │
+│ pid path          │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/pids/api-0.pid              │
+│ interpreter       │ node                                                                                            │
+│ interpreter args  │ N/A                                                                                             │
+│ script id         │ 0                                                                                               │
+│ exec cwd          │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging                                  │
+│ exec mode         │ fork_mode                                                                                       │
+│ node.js version   │ 20.20.2                                                                                         │
+│ node env          │ N/A                                                                                             │
+│ watch & reload    │ ✘                                                                                               │
+│ unstable restarts │ 0                                                                                               │
+│ created at        │ 2026-09-21T22:02:09.778Z                                                                        │
+└───────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────┘
+ Actions available
+┌────────────────────────┐
+│ km:heapdump            │
+│ km:cpu:profiling:start │
+│ km:cpu:profiling:stop  │
+│ km:heap:sampling:start │
+│ km:heap:sampling:stop  │
+└────────────────────────┘
+ Trigger via: pm2 trigger api <action_name>
+
+ Code metrics value
+┌────────────────┬───────────┐
+│ Used Heap Size │ 9.51 MiB  │
+│ Heap Usage     │ 54.44 %   │
+│ Heap Size      │ 17.48 MiB │
+└────────────────┴───────────┘
+ Divergent env variables from local env
+
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs api [--lines 1000]` to display logs
+ Use `pm2 env 0` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage api
+
+$ pm2 delete api
+[PM2] Applying action deleteProcessId on app [api](ids: [ 0 ])
+[PM2] [api](0) ✓
+┌────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+└────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 start ecosystem.config.js
+[PM2][WARN] Applications api not running, starting...
+[PM2] App [api] launched (1 instances)
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15608    │ 0s     │ 0    │ online    │ 0%       │ 18.3mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 flush api
+[PM2] Flushing:
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out-0.log
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error-0.log
+[PM2] Logs flushed
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15608, "restarts": 0, "uptime_inicio": 1790028134742, "cpu": 0, "memoria": 68063232}
+GET /crash => 500 {"message":"Não foi possível concluir a operação."}
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15608, "restarts": 0, "uptime_inicio": 1790028134742, "cpu": 2.9, "memoria": 68526080}
+GET /crash => 500 {"message":"Não foi possível concluir a operação."}
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15608, "restarts": 0, "uptime_inicio": 1790028134742, "cpu": 1.4, "memoria": 68657152}
+
+$ pm2 list
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15608    │ 2s     │ 0    │ online    │ 0%       │ 65.5mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 logs api --lines 30 --nostream
+[TAILING] Tailing last 30 lines for [api] process (change the value with --lines option)
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error-0.log last 30 lines:
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out-0.log last 30 lines:
+0|api      | {"cancelada":false,"durationMs":105.558561,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"4487de0e-a995-45af-9541-61996dc9241b","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:02:16.034Z"}
+0|api      | {"cancelada":false,"durationMs":101.052928,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"a2917e72-29f9-4bb3-9b3f-7e56cea8afee","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:02:16.729Z"}
+
+
+$ pm2 describe api
+ Describing process with id 0 - name api
+┌───────────────────┬──────────────────────────────────────────────────────────────────────────────────────────┐
+│ status            │ online                                                                                   │
+│ name              │ api                                                                                      │
+│ namespace         │ default                                                                                  │
+│ version           │ 1.0.0                                                                                    │
+│ restarts          │ 0                                                                                        │
+│ uptime            │ 2s                                                                                       │
+│ script path       │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/src/server.js        │
+│ script args       │ N/A                                                                                      │
+│ error log path    │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error-0.log │
+│ out log path      │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out-0.log   │
+│ pid path          │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/pids/api-0.pid       │
+│ interpreter       │ node                                                                                     │
+│ interpreter args  │ N/A                                                                                      │
+│ script id         │ 0                                                                                        │
+│ exec cwd          │ /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging                           │
+│ exec mode         │ fork_mode                                                                                │
+│ node.js version   │ 20.20.2                                                                                  │
+│ node env          │ development                                                                              │
+│ watch & reload    │ ✘                                                                                        │
+│ unstable restarts │ 0                                                                                        │
+│ created at        │ 2026-09-21T22:02:14.742Z                                                                 │
+└───────────────────┴──────────────────────────────────────────────────────────────────────────────────────────┘
+ Actions available
+┌────────────────────────┐
+│ km:heapdump            │
+│ km:cpu:profiling:start │
+│ km:cpu:profiling:stop  │
+│ km:heap:sampling:start │
+│ km:heap:sampling:stop  │
+└────────────────────────┘
+ Trigger via: pm2 trigger api <action_name>
+
+ Code metrics value
+┌────────────────────────┬───────────┐
+│ Used Heap Size         │ 9.49 MiB  │
+│ Heap Usage             │ 49.38 %   │
+│ Heap Size              │ 19.23 MiB │
+│ HTTP                   │ 0 req/min │
+│ HTTP P95 Latency       │ 106 ms    │
+│ HTTP Mean Latency      │ 103.5 ms  │
+│ Event Loop Latency p95 │ 0.09 ms   │
+│ Event Loop Latency     │ 0.09 ms   │
+│ Active handles         │ 4         │
+│ Active requests        │ 0         │
+└────────────────────────┴───────────┘
+ Divergent env variables from local env
+
+
+ Add your own code metrics: http://bit.ly/code-metrics
+ Use `pm2 logs api [--lines 1000]` to display logs
+ Use `pm2 env 0` to display environment variables
+ Use `pm2 monit` to monitor CPU and Memory usage api
+
+$ pm2 restart api
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [api](ids: [ 0 ])
+[PM2] [api](0) ✓
+┌────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name   │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api    │ default     │ 1.0.0   │ fork    │ 15687    │ 0s     │ 1    │ online    │ 0%       │ 18.3mb   │ lions_c… │ disabled │
+└────┴────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15687, "restarts": 1, "uptime_inicio": 1790028137780, "cpu": 27.1, "memoria": 68243456}
+
+$ pm2 reload api
+Use --update-env to update environment variables
+[PM2] Applying action reloadProcessId on app [api](ids: [ 0 ])
+[PM2] [api](0) ✓
+
+$ pm2 jlist
+[Somente métricas no resumo abaixo; ambiente omitido.]
+Resumo: {"pid": 15713, "restarts": 2, "uptime_inicio": 1790028138573, "cpu": 0, "memoria": 67969024}
+
+$ pm2 logs api --lines 20 --nostream
+[TAILING] Tailing last 20 lines for [api] process (change the value with --lines option)
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-error-0.log last 20 lines:
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2/logs/api-out-0.log last 20 lines:
+0|api      | {"cancelada":false,"durationMs":105.558561,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"4487de0e-a995-45af-9541-61996dc9241b","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:02:16.034Z"}
+0|api      | {"cancelada":false,"durationMs":101.052928,"erro":{"message":"falha ao processar a fila","stack":"Error: falha ao processar a fila\n    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:18:13)\n    at listOnTimeout (node:internal/timers:581:17)\n    at processTimers (node:internal/timers:519:7)"},"level":"error","message":"request","method":"GET","requestId":"a2917e72-29f9-4bb3-9b3f-7e56cea8afee","route":"/crash","statusCode":500,"timestamp":"2026-09-21T22:02:16.729Z"}
+0|api      | {"level":"info","message":"Encerrando servidor","timestamp":"2026-09-21T22:02:17.679Z"}
+0|api      | {"level":"info","message":"Servidor iniciado","port":3001,"timestamp":"2026-09-21T22:02:17.904Z"}
+0|api      | {"level":"info","message":"Encerrando servidor","timestamp":"2026-09-21T22:02:18.473Z"}
+0|api      | {"level":"info","message":"Servidor iniciado","port":3001,"timestamp":"2026-09-21T22:02:18.695Z"}
+
+
+$ pm2 delete api
+[PM2] Applying action deleteProcessId on app [api](ids: [ 0 ])
+[PM2] [api](0) ✓
+┌────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+└────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 kill
+[PM2][WARN] No process found
+[PM2] [v] All Applications Stopped
+[PM2] [v] PM2 Daemon Stopped

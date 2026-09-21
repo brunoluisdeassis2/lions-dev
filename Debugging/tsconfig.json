@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "CommonJS", "strict": true,
+    "esModuleInterop": true, "skipLibCheck": true, "sourceMap": true,
+    "outDir": "dist", "rootDir": "."
+  },
+  "include": ["src/**/*.ts", "investigacao/**/*.ts"]
+}

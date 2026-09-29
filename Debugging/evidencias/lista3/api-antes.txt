@@ -1,0 +1,35 @@
+{"level":"info","message":"requisição recebida","pid":26207,"requestId":1,"timestamp":"2026-09-29T16:06:14.948Z"}
+EX8 ANTES: status 404
+EX8 ANTES: content-type text/html; charset=utf-8
+EX8 ANTES: corpo <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Error</title>
+</head>
+<body>
+<pre>AppError: usuário não encontrado<br> &nbsp; &nbsp;at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/api-antes.js:19:11<br> &nbsp; &nbsp;at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)<br> &nbsp; &nbsp;at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)<br> &nbsp; &nbsp;at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)<br> &nbsp; &nbsp;at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)<br> &nbsp; &nbsp;at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)<br> &nbsp; &nbsp;at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15<br> &nbsp; &nbsp;at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:600:14)<br> &nbsp; &nbsp;at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:610:14)<br> &nbsp; &nbsp;at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:664:3)</pre>
+</body>
+</html>
+
+EX9 ANTES: três requisições concorrentes
+AppError: usuário não encontrado
+    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/api-antes.js:19:11
+    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)
+    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)
+    at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)
+    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15
+    at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:600:14)
+    at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:610:14)
+    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:664:3)
+{"level":"info","message":"requisição recebida","pid":26207,"requestId":2,"timestamp":"2026-09-29T16:06:14.958Z"}
+{"level":"info","message":"buscando pedido","pid":26207,"timestamp":"2026-09-29T16:06:14.959Z"}
+{"level":"info","message":"requisição recebida","pid":26207,"requestId":3,"timestamp":"2026-09-29T16:06:14.959Z"}
+{"level":"info","message":"buscando pedido","pid":26207,"timestamp":"2026-09-29T16:06:14.959Z"}
+{"level":"info","message":"requisição recebida","pid":26207,"requestId":4,"timestamp":"2026-09-29T16:06:14.959Z"}
+{"level":"info","message":"buscando pedido","pid":26207,"timestamp":"2026-09-29T16:06:14.959Z"}
+{"level":"info","message":"pedido encontrado","pid":26207,"timestamp":"2026-09-29T16:06:14.989Z"}
+{"level":"info","message":"pedido encontrado","pid":26207,"timestamp":"2026-09-29T16:06:14.991Z"}
+{"level":"info","message":"pedido encontrado","pid":26207,"timestamp":"2026-09-29T16:06:14.991Z"}

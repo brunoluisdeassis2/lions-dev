@@ -1,6 +1,10 @@
 // Minha ideia: criar uma API pequena para testar os logs e os erros dos exercícios 5 e 6.
 // Express ajuda a receber requisições e enviar respostas. Os outros nomes são tipos do TypeScript.
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
+import { requestContext } from "./requestContext";
+import { errorHandler } from "./errorHandler";
+import { AppError } from "./exercicio2";
+import { findUser, buscarPedido } from "./servico-estudo";
 // Trago o registrador de mensagens que configurei no exercício 4.
 import { logger } from "./logger";
 // Trago a função que vai medir e registrar cada requisição.
@@ -10,6 +14,8 @@ import { requestLogger } from "./requestLogger";
 export const app = express();
 // use coloca um middleware no caminho das requisições.
 // Registro o logger antes das rotas para ele conseguir observar todas elas.
+// Primeiro preparo o ID que vai acompanhar a requisição inteira.
+app.use(requestContext);
 app.use(requestLogger);
 // Permito que o Express entenda corpos enviados em JSON.
 app.use(express.json());
@@ -17,9 +23,22 @@ app.use(express.json());
 // Respondo um objeto em JSON; sem escolher outro status, ele será 200 (sucesso).
 // _req é o pedido que recebi, mas não preciso usar aqui. res é a resposta.
 app.get("/health", (_req, res) => { res.json({ ok: true }); });
-// O :id é uma parte variável do endereço. Em /usuarios/42, req.params.id vale "42".
-// Neste exercício, só devolvo esse ID para testar o log da rota.
-app.get("/usuarios/:id", (req, res) => { res.json({ id: req.params.id }); });
+// Uso async/await para esperar a busca. No Express 5, uma rejeição chega ao errorHandler.
+// Em Express 4, eu precisaria de try/catch com next(erro) ou de um adaptador equivalente.
+app.get("/usuarios/:id", async (req, res) => {
+  const usuario = await findUser(req.params.id);
+  if (!usuario) throw new AppError("Usuário não encontrado", 404);
+  res.json(usuario);
+});
+// O serviço registra seus passos usando o ID do contexto, sem recebê-lo como parâmetro.
+app.get("/pedidos/:id", async (req, res) => {
+  const pedido = await buscarPedido(req.params.id);
+  res.json(pedido);
+});
+// Provoco uma Promise rejeitada para verificar o tratamento de uma rota assíncrona.
+app.get("/erro-async", async () => {
+  await Promise.reject(new Error("Falha interna da Promise de teste"));
+});
 // Crio uma falha de propósito com throw para testar o tratamento e o log de status 500.
 app.get("/erro", () => { throw new Error("Falha simulada na rota"); });
 // Crio uma rota com atraso para conferir se o logger realmente mede a espera.
@@ -44,20 +63,10 @@ app.get("/crash", (_req, res, next) => {
     }
   }, 100);
 });
-// Se nenhuma rota respondeu, devolvo 404, que significa “não encontrado”.
-app.use((_req, res) => { res.status(404).json({ message: "Rota não encontrada" }); });
-// Deixo o tratamento de erros por último. Ele tem quatro parâmetros: o Express
-// reconhece esse formato como middleware de erros. _req e _next não são usados aqui.
-app.use((erro: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  // Confiro se recebi um Error e guardo a mensagem e o stack em locals.
-  // O logger vai usar isso no fim da resposta, sem precisar registrar o mesmo erro duas vezes.
-  if (erro instanceof Error) res.locals.erro = { message: erro.message, stack: erro.stack };
-  // Se recebi outro tipo de valor como erro, guardo uma explicação genérica.
-  else res.locals.erro = { message: "Erro inesperado" };
-  // Envio status 500 (falha do servidor) e uma mensagem simples para o usuário.
-  // Não envio o stack na resposta; esses detalhes ficam no log.
-  res.status(500).json({ message: "Não foi possível concluir a operação." });
-});
+// Se nenhuma rota respondeu, envio um AppError ao mesmo tratamento das outras falhas.
+app.use((_req, _res, next) => { next(new AppError("Rota não encontrada", 404)); });
+// Registro o tratador por último: ele recebe os erros das etapas anteriores.
+app.use(errorHandler);
 
 // Só abro a porta ao executar este arquivo diretamente.
 // Quando os testes importam app, eles escolhem como iniciar o servidor.

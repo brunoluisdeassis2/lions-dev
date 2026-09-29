@@ -1,0 +1,10 @@
+Inspector real; não é uma captura da interface gráfica do VS Code.
+Watch antes da condição: {"total":100,"applied":0,"index":0,"valorItem":100,"somaBruta":350,"somaAteAqui":100}
+Step Over: avancei a execução da condição.
+Watch antes da condição: {"total":250,"applied":0,"index":1,"valorItem":150,"somaBruta":350,"somaAteAqui":250}
+Step Over: avancei a execução da condição.
+Watch antes da condição: {"total":337.5,"applied":1,"index":2,"valorItem":100,"somaBruta":350,"somaAteAqui":350}
+Step Over: avancei a execução da condição.
+Resultado original: 320.63
+Resultado invertido: 320.63
+Resultado outra ordem: 332.5

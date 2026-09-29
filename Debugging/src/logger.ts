@@ -1,6 +1,7 @@
 // Uso o Winston, uma biblioteca que ajuda a organizar os registros do programa.
 // import traz essa biblioteca instalada no projeto.
 import winston from "winston";
+import { requestStorage } from "./requestContext";
 
 // Crio um logger para compartilhar com os outros arquivos usando export.
 // createLogger recebe um objeto com as opções: nível, formato e destino dos registros.
@@ -17,6 +18,13 @@ export const logger = winston.createLogger({
     // o caminho das chamadas que levou à falha. true significa que ativei essa opção.
     winston.format.errors({ stack: true }),
     // Escolho JSON: a saída fica organizada em campos, como message, level e timestamp.
+    // Leio o contexto automaticamente em cada registro, inclusive dentro dos serviços.
+    // Se já houver ID explícito (como no evento finish), preservo esse ID.
+    winston.format((registro) => {
+      registro.requestId = registro.requestId || requestStorage.getStore()?.requestId;
+      registro.pid = process.pid; // Me ajuda a distinguir os dois processos do teste com PM2.
+      return registro;
+    })(),
     winston.format.json(),
   ),
   // transports indica para onde vão os registros. Escolhi o console (terminal).

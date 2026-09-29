@@ -6,6 +6,6 @@ Exercícios organizados por aula.
 
 - `Aula3`: API CRUD de usuários com Express e TypeScript.
 - `Aula4`: aplicação de consulta e filtro de países com TypeScript.
-- `Debugging`: seis exercícios de debug, tratamento de erros, logs e PM2, com guia de estudo e evidências.
+- `Debugging`: onze exercícios de debug, erros assíncronos, logs, PM2 e memória, com guias de estudo e evidências.
 
 Cada pasta possui seu próprio `README.md` com as instruções para executar o exercício.

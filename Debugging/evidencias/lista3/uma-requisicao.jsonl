@@ -1,0 +1,4 @@
+{"level": "info", "message": "requisição recebida", "pid": 25769, "requestId": "f6818c53-a98e-484a-a241-0e765fb20371", "timestamp": "2026-09-29T16:04:37.691Z"}
+{"level": "info", "message": "buscando pedido", "pid": 25769, "requestId": "f6818c53-a98e-484a-a241-0e765fb20371", "timestamp": "2026-09-29T16:04:37.692Z"}
+{"level": "info", "message": "pedido encontrado", "pid": 25769, "requestId": "f6818c53-a98e-484a-a241-0e765fb20371", "timestamp": "2026-09-29T16:04:37.722Z"}
+{"cancelada": false, "durationMs": 31.307181, "level": "info", "message": "request", "method": "GET", "pid": 25769, "requestId": "f6818c53-a98e-484a-a241-0e765fb20371", "route": "/pedidos/:id", "statusCode": 200, "timestamp": "2026-09-29T16:04:37.723Z"}

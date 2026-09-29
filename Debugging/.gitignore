@@ -1,1 +1,3 @@
 .pm2/
+.pm2-lista3/
+*.heapsnapshot

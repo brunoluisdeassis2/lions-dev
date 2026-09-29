@@ -1,0 +1,124 @@
+
+> exercicios-debugging@1.0.0 test:lista3
+> ts-node src/verificar-lista3.ts
+
+EX7: arquivo válido, sem erro
+falha ao ler config Error: ENOENT: no such file or directory, open 'config/nao-existe.json'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async readConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:9:21)
+    at async waitForActual (node:assert:533:5)
+    at async Function.rejects (node:assert:654:25)
+    at async verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:32:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'config/nao-existe.json'
+}
+EX7: arquivo ausente virou AppError 404
+falha ao ler config SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at readConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:10:17)
+    at async waitForActual (node:assert:533:5)
+    at async Function.rejects (node:assert:654:25)
+    at async verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:36:5)
+EX7: JSON inválido identificado como SyntaxError
+falha no fetch TypeError: fetch failed
+    at node:internal/deps/undici/undici:14976:13
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async fetchConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:37:22)
+    at async waitForActual (node:assert:533:5)
+    at async Function.rejects (node:assert:654:25)
+    at async verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:38:5) {
+  [cause]: Error: getaddrinfo ENOTFOUND nao-existe.invalid
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'nao-existe.invalid'
+  }
+}
+falha no fetch TypeError: Failed to parse URL from isto não é uma URL
+    at node:internal/deps/undici/undici:14976:13
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async fetchConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:37:22)
+    at async waitForActual (node:assert:533:5)
+    at async Function.rejects (node:assert:654:25)
+    at async verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:39:5) {
+  [cause]: TypeError: Invalid URL
+      at new URL (node:internal/url:806:29)
+      at new Request (node:internal/deps/undici/undici:9804:25)
+      at fetch (node:internal/deps/undici/undici:10533:25)
+      at fetch (node:internal/deps/undici/undici:14974:10)
+      at fetch (node:internal/bootstrap/web/exposed-window-or-worker:72:12)
+      at fetchConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:37:28)
+      at verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:39:37)
+      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    code: 'ERR_INVALID_URL',
+    input: 'isto não é uma URL'
+  }
+}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"970aeedc-384a-42bc-9fa6-100bbf506827","timestamp":"2026-09-29T16:04:37.467Z"}
+{"level":"error","message":"Rota não encontrada","name":"AppError","pid":25769,"requestId":"970aeedc-384a-42bc-9fa6-100bbf506827","stack":"AppError: Rota não encontrada\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:67:38\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:297:9\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at read (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/read.js:53:5)\n    at jsonParser (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/types/json.js:60:5)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)","statusCode":404,"timestamp":"2026-09-29T16:04:37.468Z"}
+{"cancelada":false,"durationMs":4.54094,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"970aeedc-384a-42bc-9fa6-100bbf506827","route":"rota-nao-encontrada","statusCode":404,"timestamp":"2026-09-29T16:04:37.471Z"}
+EX7: fetch resolveu normalmente com status 404
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"de29d9bc-fc45-4f3b-aeb5-b2b9b3233aed","timestamp":"2026-09-29T16:04:37.475Z"}
+{"level":"error","message":"Rota não encontrada","name":"AppError","pid":25769,"requestId":"de29d9bc-fc45-4f3b-aeb5-b2b9b3233aed","stack":"AppError: Rota não encontrada\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:67:38\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:297:9\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at read (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/read.js:53:5)\n    at jsonParser (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/types/json.js:60:5)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)","statusCode":404,"timestamp":"2026-09-29T16:04:37.476Z"}
+{"cancelada":false,"durationMs":1.006812,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"de29d9bc-fc45-4f3b-aeb5-b2b9b3233aed","route":"rota-nao-encontrada","statusCode":404,"timestamp":"2026-09-29T16:04:37.476Z"}
+falha no fetch AppError: Não foi possível buscar a configuração
+    at fetchConfig (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/exercicio7.ts:41:13)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async waitForActual (node:assert:533:5)
+    at async Function.rejects (node:assert:654:25)
+    at async verificar (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:43:5) {
+  statusCode: 404
+}
+EX7: falhas de rede, HTTP e temporizador tratadas; processo continua vivo
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"a3ecb126-03d6-4fce-b123-21cf48b9bd36","timestamp":"2026-09-29T16:04:37.680Z"}
+{"cancelada":false,"durationMs":0.835385,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"a3ecb126-03d6-4fce-b123-21cf48b9bd36","route":"/usuarios/:id","statusCode":200,"timestamp":"2026-09-29T16:04:37.680Z"}
+EX8: /usuarios/42 200 {"id":"42","nome":"Bruno"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"0a756887-c39d-4258-b319-65c4b62e417d","timestamp":"2026-09-29T16:04:37.683Z"}
+{"level":"error","message":"Usuário não encontrado","name":"AppError","pid":25769,"requestId":"0a756887-c39d-4258-b319-65c4b62e417d","stack":"AppError: Usuário não encontrado\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:30:23\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)","statusCode":404,"timestamp":"2026-09-29T16:04:37.683Z"}
+{"cancelada":false,"durationMs":0.757669,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"0a756887-c39d-4258-b319-65c4b62e417d","route":"/usuarios/:id","statusCode":404,"timestamp":"2026-09-29T16:04:37.684Z"}
+EX8: /usuarios/999 404 {"statusCode":404,"message":"Usuário não encontrado","timestamp":"2026-09-29T16:04:37.684Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"0d30bdf8-c473-4329-a321-bb92da082626","timestamp":"2026-09-29T16:04:37.685Z"}
+{"level":"error","message":"Falha interna simulada ao consultar usuários","pid":25769,"requestId":"0d30bdf8-c473-4329-a321-bb92da082626","stack":"Error: Falha interna simulada ao consultar usuários\n    at findUser (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/servico-estudo.ts:5:28)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:29:33\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)\n    at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15\n    at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:600:14)\n    at param (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:610:14)","timestamp":"2026-09-29T16:04:37.685Z"}
+{"cancelada":false,"durationMs":1.107588,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"0d30bdf8-c473-4329-a321-bb92da082626","route":"/usuarios/:id","statusCode":500,"timestamp":"2026-09-29T16:04:37.686Z"}
+EX8: /usuarios/erro 500 {"statusCode":500,"message":"Não foi possível concluir a operação.","timestamp":"2026-09-29T16:04:37.686Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"c9696ec8-eee0-4b31-b95d-fc0c5e8df51e","timestamp":"2026-09-29T16:04:37.687Z"}
+{"level":"error","message":"Falha interna da Promise de teste","pid":25769,"requestId":"c9696ec8-eee0-4b31-b95d-fc0c5e8df51e","stack":"Error: Falha interna da Promise de teste\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:40:24\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)\n    at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at read (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/read.js:53:5)","timestamp":"2026-09-29T16:04:37.688Z"}
+{"cancelada":false,"durationMs":0.768199,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"c9696ec8-eee0-4b31-b95d-fc0c5e8df51e","route":"/erro-async","statusCode":500,"timestamp":"2026-09-29T16:04:37.688Z"}
+EX8: /erro-async 500 {"statusCode":500,"message":"Não foi possível concluir a operação.","timestamp":"2026-09-29T16:04:37.688Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"85422294-67d2-41e0-b6ce-3b887480f403","timestamp":"2026-09-29T16:04:37.689Z"}
+{"level":"error","message":"Rota não encontrada","name":"AppError","pid":25769,"requestId":"85422294-67d2-41e0-b6ce-3b887480f403","stack":"AppError: Rota não encontrada\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:67:38\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:297:9\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at read (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/read.js:53:5)\n    at jsonParser (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/body-parser/lib/types/json.js:60:5)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:342:13)","statusCode":404,"timestamp":"2026-09-29T16:04:37.689Z"}
+{"cancelada":false,"durationMs":0.571235,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"85422294-67d2-41e0-b6ce-3b887480f403","route":"rota-nao-encontrada","statusCode":404,"timestamp":"2026-09-29T16:04:37.690Z"}
+EX8: /nao-registrada 404 {"statusCode":404,"message":"Rota não encontrada","timestamp":"2026-09-29T16:04:37.690Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"f6818c53-a98e-484a-a241-0e765fb20371","timestamp":"2026-09-29T16:04:37.691Z"}
+{"level":"info","message":"buscando pedido","pid":25769,"requestId":"f6818c53-a98e-484a-a241-0e765fb20371","timestamp":"2026-09-29T16:04:37.692Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"5ba2ecbb-f09a-4a46-9b78-d274a9bb00d8","timestamp":"2026-09-29T16:04:37.692Z"}
+{"level":"info","message":"buscando pedido","pid":25769,"requestId":"5ba2ecbb-f09a-4a46-9b78-d274a9bb00d8","timestamp":"2026-09-29T16:04:37.693Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"9615f826-e06d-4fce-b412-68675a9beb4f","timestamp":"2026-09-29T16:04:37.693Z"}
+{"level":"info","message":"buscando pedido","pid":25769,"requestId":"9615f826-e06d-4fce-b412-68675a9beb4f","timestamp":"2026-09-29T16:04:37.693Z"}
+{"level":"info","message":"pedido encontrado","pid":25769,"requestId":"f6818c53-a98e-484a-a241-0e765fb20371","timestamp":"2026-09-29T16:04:37.722Z"}
+{"cancelada":false,"durationMs":31.307181,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"f6818c53-a98e-484a-a241-0e765fb20371","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:04:37.723Z"}
+{"level":"info","message":"pedido encontrado","pid":25769,"requestId":"5ba2ecbb-f09a-4a46-9b78-d274a9bb00d8","timestamp":"2026-09-29T16:04:37.723Z"}
+{"cancelada":false,"durationMs":30.903026,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"5ba2ecbb-f09a-4a46-9b78-d274a9bb00d8","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:04:37.723Z"}
+{"level":"info","message":"pedido encontrado","pid":25769,"requestId":"9615f826-e06d-4fce-b412-68675a9beb4f","timestamp":"2026-09-29T16:04:37.723Z"}
+{"cancelada":false,"durationMs":30.962451,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"9615f826-e06d-4fce-b412-68675a9beb4f","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:04:37.724Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"meu-teste-erro","timestamp":"2026-09-29T16:04:37.726Z"}
+{"level":"info","message":"buscando pedido","pid":25769,"requestId":"meu-teste-erro","timestamp":"2026-09-29T16:04:37.726Z"}
+{"level":"error","message":"Falha interna simulada ao buscar pedido","pid":25769,"requestId":"meu-teste-erro","stack":"Error: Falha interna simulada ao buscar pedido\n    at buscarPedido (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/servico-estudo.ts:15:28)\n    at async /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/server.ts:35:18","timestamp":"2026-09-29T16:04:37.757Z"}
+{"cancelada":false,"durationMs":31.085286,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"meu-teste-erro","route":"/pedidos/:id","statusCode":500,"timestamp":"2026-09-29T16:04:37.757Z"}
+{"level":"info","message":"requisição recebida","pid":25769,"requestId":"c39504c2-11a3-422b-8dfd-fd6626c28759","timestamp":"2026-09-29T16:04:37.759Z"}
+{"cancelada":false,"durationMs":0.424332,"level":"info","message":"request","method":"GET","pid":25769,"requestId":"c39504c2-11a3-422b-8dfd-fd6626c28759","route":"/health","statusCode":200,"timestamp":"2026-09-29T16:04:37.759Z"}
+EX9: três IDs distintos e estáveis; ID do cliente preservado até o log de erro
+FILTRO_ID: f6818c53-a98e-484a-a241-0e765fb20371
+EX10: 180→180; 200→200; três ordens→332.5; 500→475; vazia→0
+EX11: limite, expiração e encerramento verificados
+{"level":"error","message":"Falha após os cabeçalhos","pid":25769,"stack":"Error: Falha após os cabeçalhos\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/src/verificar-lista3.ts:122:69\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:157:13)\n    at Route.dispatch (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/route.js:117:3)\n    at handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:435:11)\n    at Layer.handleRequest (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/lib/layer.js:152:17)\n    at /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:295:15\n    at processParams (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:582:12)\n    at next (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:291:5)\n    at Function.handle (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/node_modules/router/index.js:186:3)","timestamp":"2026-09-29T16:04:38.973Z"}
+Todos os cenários da lista 3 passaram.
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.1.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+npm notice To update run: npm install -g npm@12.1.0
+npm notice

@@ -1,0 +1,13 @@
+A parte síncrona terminou; a falha ainda vai acontecer.
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/async-antes.js:19
+    setTimeout(() => { throw new Error("tentativa de releitura falhou"); }, 200);
+                       ^
+
+Error: tentativa de releitura falhou
+    at Timeout._onTimeout (/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/dist/investigacao/async-antes.js:19:30)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+
+Node.js v20.20.2
+
+Código de saída: 1

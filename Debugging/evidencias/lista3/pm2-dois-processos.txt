@@ -1,0 +1,138 @@
+
+$ pm2 start ecosystem-lista3.config.js
+
+                        -------------
+
+__/\\\\\\\\\\\\\____/\\\\____________/\\\\____/\\\\\\\\\_____
+ _\/\\\/////////\\\_\/\\\\\\________/\\\\\\__/\\\///////\\\___
+  _\/\\\_______\/\\\_\/\\\//\\\____/\\\//\\\_\///______\//\\\__
+   _\/\\\\\\\\\\\\\/__\/\\\\///\\\/\\\/_\/\\\___________/\\\/___
+    _\/\\\/////////____\/\\\__\///\\\/___\/\\\________/\\\//_____
+     _\/\\\_____________\/\\\____\///_____\/\\\_____/\\\//________
+      _\/\\\_____________\/\\\_____________\/\\\___/\\\/___________
+       _\/\\\_____________\/\\\_____________\/\\\__/\\\\\\\\\\\\\\\_
+        _\///______________\///______________\///__\///////////////__
+
+
+                          Runtime Edition
+
+        PM2 is a Production Process Manager for Node.js applications
+                     with a built-in Load Balancer.
+
+                Start and Daemonize any application:
+                $ pm2 start app.js
+
+                Load Balance 4 instances of api.js:
+                $ pm2 start api.js -i 4
+
+                Monitor in production:
+                $ pm2 monitor
+
+                Make pm2 auto-boot at server restart:
+                $ pm2 startup
+
+                To go further checkout:
+                http://pm2.io/
+
+
+                        -------------
+
+[PM2] Spawning PM2 daemon with pm2_home=/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3
+[PM2] PM2 Successfully daemonized
+[PM2][WARN] Applications api-lista3 not running, starting...
+[PM2] App [api-lista3] launched (2 instances)
+┌────┬───────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api-lista3    │ default     │ 1.0.0   │ cluster │ 26269    │ 0s     │ 0    │ online    │ 0%       │ 48.3mb   │ lions_c… │ disabled │
+│ 1  │ api-lista3    │ default     │ 1.0.0   │ cluster │ 26276    │ 0s     │ 0    │ online    │ 0%       │ 46.0mb   │ lions_c… │ disabled │
+└────┴───────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 flush api-lista3
+[PM2] Flushing:
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-out-0.log
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-error-0.log
+[PM2] Flushing:
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-out-1.log
+[PM2] /home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-error-1.log
+[PM2] Logs flushed
+
+$ pm2 list
+┌────┬───────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name          │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼───────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0  │ api-lista3    │ default     │ 1.0.0   │ cluster │ 26269    │ 2s     │ 0    │ online    │ 0%       │ 64.8mb   │ lions_c… │ disabled │
+│ 1  │ api-lista3    │ default     │ 1.0.0   │ cluster │ 26276    │ 2s     │ 0    │ online    │ 0%       │ 65.5mb   │ lions_c… │ disabled │
+└────┴───────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 logs api-lista3 --lines 100 --nostream --raw
+[TAILING] Tailing last 100 lines for [api-lista3] process (change the value with --lines option)
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-error-0.log last 100 lines:
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-error-1.log last 100 lines:
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-out-0.log last 100 lines:
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"b2d7f257-4266-4344-a46b-ebe3bf884980","timestamp":"2026-09-29T16:06:17.956Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"b2d7f257-4266-4344-a46b-ebe3bf884980","timestamp":"2026-09-29T16:06:17.957Z"}
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"f8010e65-a106-4b47-9996-7c8a9809c9f0","timestamp":"2026-09-29T16:06:17.979Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"f8010e65-a106-4b47-9996-7c8a9809c9f0","timestamp":"2026-09-29T16:06:17.979Z"}
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"84b7fa50-26a9-4064-92b6-832707565728","timestamp":"2026-09-29T16:06:17.986Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"84b7fa50-26a9-4064-92b6-832707565728","timestamp":"2026-09-29T16:06:17.986Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"b2d7f257-4266-4344-a46b-ebe3bf884980","timestamp":"2026-09-29T16:06:17.987Z"}
+{"cancelada":false,"durationMs":33.870214,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"b2d7f257-4266-4344-a46b-ebe3bf884980","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:17.990Z"}
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"dff31b87-4a59-4aad-96a5-0c84f471edc0","timestamp":"2026-09-29T16:06:17.991Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"dff31b87-4a59-4aad-96a5-0c84f471edc0","timestamp":"2026-09-29T16:06:17.991Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"f8010e65-a106-4b47-9996-7c8a9809c9f0","timestamp":"2026-09-29T16:06:18.010Z"}
+{"cancelada":false,"durationMs":31.055451,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"f8010e65-a106-4b47-9996-7c8a9809c9f0","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.010Z"}
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"04e02429-8804-461a-8e5c-9edff57b4a30","timestamp":"2026-09-29T16:06:18.011Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"04e02429-8804-461a-8e5c-9edff57b4a30","timestamp":"2026-09-29T16:06:18.011Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"84b7fa50-26a9-4064-92b6-832707565728","timestamp":"2026-09-29T16:06:18.016Z"}
+{"cancelada":false,"durationMs":30.619735,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"84b7fa50-26a9-4064-92b6-832707565728","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.017Z"}
+{"level":"info","message":"requisição recebida","pid":26269,"requestId":"d75643a1-fa20-4f3e-93d9-7c0aa81dffbb","timestamp":"2026-09-29T16:06:18.017Z"}
+{"level":"info","message":"buscando pedido","pid":26269,"requestId":"d75643a1-fa20-4f3e-93d9-7c0aa81dffbb","timestamp":"2026-09-29T16:06:18.017Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"dff31b87-4a59-4aad-96a5-0c84f471edc0","timestamp":"2026-09-29T16:06:18.022Z"}
+{"cancelada":false,"durationMs":31.186042,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"dff31b87-4a59-4aad-96a5-0c84f471edc0","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.022Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"04e02429-8804-461a-8e5c-9edff57b4a30","timestamp":"2026-09-29T16:06:18.041Z"}
+{"cancelada":false,"durationMs":31.022828,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"04e02429-8804-461a-8e5c-9edff57b4a30","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.042Z"}
+{"level":"info","message":"pedido encontrado","pid":26269,"requestId":"d75643a1-fa20-4f3e-93d9-7c0aa81dffbb","timestamp":"2026-09-29T16:06:18.047Z"}
+{"cancelada":false,"durationMs":30.431657,"level":"info","message":"request","method":"GET","pid":26269,"requestId":"d75643a1-fa20-4f3e-93d9-7c0aa81dffbb","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.048Z"}
+
+/home/lions_convidado/Bruno/codigo/21deSet/lions-dev/Debugging/.pm2-lista3/logs/api-lista3-out-1.log last 100 lines:
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"aec3682a-ae44-4031-9b7f-4312e64a7018","timestamp":"2026-09-29T16:06:17.970Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"aec3682a-ae44-4031-9b7f-4312e64a7018","timestamp":"2026-09-29T16:06:17.970Z"}
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"03f950b5-a7bc-439d-9525-4ddac4685d50","timestamp":"2026-09-29T16:06:17.980Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"03f950b5-a7bc-439d-9525-4ddac4685d50","timestamp":"2026-09-29T16:06:17.980Z"}
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"0d8e6a61-1bcd-4121-93a7-dd858f7c3579","timestamp":"2026-09-29T16:06:17.986Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"0d8e6a61-1bcd-4121-93a7-dd858f7c3579","timestamp":"2026-09-29T16:06:17.986Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"aec3682a-ae44-4031-9b7f-4312e64a7018","timestamp":"2026-09-29T16:06:18.002Z"}
+{"cancelada":false,"durationMs":34.538976,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"aec3682a-ae44-4031-9b7f-4312e64a7018","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.004Z"}
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"0ce1b52c-9617-4791-ba35-e71cce8bd9de","timestamp":"2026-09-29T16:06:18.006Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"0ce1b52c-9617-4791-ba35-e71cce8bd9de","timestamp":"2026-09-29T16:06:18.006Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"03f950b5-a7bc-439d-9525-4ddac4685d50","timestamp":"2026-09-29T16:06:18.010Z"}
+{"cancelada":false,"durationMs":30.866664,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"03f950b5-a7bc-439d-9525-4ddac4685d50","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.011Z"}
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"94534a99-8d10-4a37-b425-1b92e8228124","timestamp":"2026-09-29T16:06:18.011Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"94534a99-8d10-4a37-b425-1b92e8228124","timestamp":"2026-09-29T16:06:18.012Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"0d8e6a61-1bcd-4121-93a7-dd858f7c3579","timestamp":"2026-09-29T16:06:18.016Z"}
+{"cancelada":false,"durationMs":30.427157,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"0d8e6a61-1bcd-4121-93a7-dd858f7c3579","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.016Z"}
+{"level":"info","message":"requisição recebida","pid":26276,"requestId":"36a8ea0b-19d6-4b76-8ab5-f36149ff3a98","timestamp":"2026-09-29T16:06:18.017Z"}
+{"level":"info","message":"buscando pedido","pid":26276,"requestId":"36a8ea0b-19d6-4b76-8ab5-f36149ff3a98","timestamp":"2026-09-29T16:06:18.017Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"0ce1b52c-9617-4791-ba35-e71cce8bd9de","timestamp":"2026-09-29T16:06:18.036Z"}
+{"cancelada":false,"durationMs":30.722509,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"0ce1b52c-9617-4791-ba35-e71cce8bd9de","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.036Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"94534a99-8d10-4a37-b425-1b92e8228124","timestamp":"2026-09-29T16:06:18.042Z"}
+{"cancelada":false,"durationMs":30.519992,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"94534a99-8d10-4a37-b425-1b92e8228124","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.042Z"}
+{"level":"info","message":"pedido encontrado","pid":26276,"requestId":"36a8ea0b-19d6-4b76-8ab5-f36149ff3a98","timestamp":"2026-09-29T16:06:18.047Z"}
+{"cancelada":false,"durationMs":30.542332,"level":"info","message":"request","method":"GET","pid":26276,"requestId":"36a8ea0b-19d6-4b76-8ab5-f36149ff3a98","route":"/pedidos/:id","statusCode":200,"timestamp":"2026-09-29T16:06:18.048Z"}
+
+
+VALIDADO: 12 IDs distintos, sequência completa por ID, dois PIDs atendendo.
+
+$ pm2 delete api-lista3
+[PM2] Applying action deleteProcessId on app [api-lista3](ids: [ 0, 1 ])
+[PM2] [api-lista3](0) ✓
+[PM2] [api-lista3](1) ✓
+┌────┬───────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name      │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+└────┴───────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+
+$ pm2 kill
+[PM2][WARN] No process found
+[PM2] [v] All Applications Stopped
+[PM2] [v] PM2 Daemon Stopped

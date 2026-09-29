@@ -1,11 +1,33 @@
 {
-  "name": "exercicios-debugging", "version": "1.0.0", "private": true,
+  "name": "exercicios-debugging",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "tsc", "check": "tsc --noEmit", "test": "ts-node src/verificar.ts",
-    "ex1": "ts-node src/exercicio1.ts", "ex2": "ts-node src/exercicio2.ts",
-    "ex3": "ts-node src/exercicio3.ts", "ex4": "ts-node src/exercicio4.ts",
-    "start": "ts-node src/server.ts", "antes": "ts-node investigacao/antes.ts"
+    "build": "tsc",
+    "check": "tsc --noEmit",
+    "test": "ts-node src/verificar.ts",
+    "ex1": "ts-node src/exercicio1.ts",
+    "ex2": "ts-node src/exercicio2.ts",
+    "ex3": "ts-node src/exercicio3.ts",
+    "ex4": "ts-node src/exercicio4.ts",
+    "start": "ts-node src/server.ts",
+    "antes": "ts-node investigacao/antes.ts",
+    "ex7": "ts-node src/exercicio7.ts",
+    "ex10": "ts-node src/exercicio10.ts",
+    "ex11": "ts-node src/exercicio11.ts",
+    "test:lista3": "ts-node src/verificar-lista3.ts",
+    "memoria": "npm run build && node --expose-gc dist/investigacao/memoria.js corrigido",
+    "watch:antes": "ts-node investigacao/desconto-antes.ts"
   },
-  "dependencies": { "express": "^5.2.1", "winston": "^3.19.0" },
-  "devDependencies": { "typescript": "~5.9.2", "ts-node": "^10.9.2", "@types/node": "^22.0.0", "@types/express": "^5.0.6", "pm2": "^6.0.0" }
+  "dependencies": {
+    "express": "^5.2.1",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2",
+    "ts-node": "^10.9.2",
+    "@types/node": "^22.0.0",
+    "@types/express": "^5.0.6",
+    "pm2": "^6.0.0"
+  }
 }

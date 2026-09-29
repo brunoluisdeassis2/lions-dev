@@ -1,0 +1,11 @@
+{"modo":"sem-timer","iteracoes":0,"rssMiB":37.57,"heapTotalMiB":4.98,"heapUsedMiB":2.59,"externalMiB":1.07,"arrayBuffersMiB":0.01,"entradas":0,"listeners":0,"intervalos":0}
+{"modo":"sem-timer","iteracoes":200,"rssMiB":40.72,"heapTotalMiB":5.48,"heapUsedMiB":2.92,"externalMiB":101.35,"arrayBuffersMiB":100.01,"entradas":200,"listeners":200,"intervalos":0}
+{"modo":"sem-timer","iteracoes":400,"rssMiB":41.47,"heapTotalMiB":5.48,"heapUsedMiB":2.99,"externalMiB":201.35,"arrayBuffersMiB":200.01,"entradas":400,"listeners":400,"intervalos":0}
+{"modo":"sem-timer","iteracoes":600,"rssMiB":42.35,"heapTotalMiB":5.48,"heapUsedMiB":3.05,"externalMiB":301.35,"arrayBuffersMiB":300.01,"entradas":600,"listeners":600,"intervalos":0}
+{"modo":"sem-timer","iteracoes":800,"rssMiB":43.22,"heapTotalMiB":5.73,"heapUsedMiB":3.14,"externalMiB":401.35,"arrayBuffersMiB":400.01,"entradas":800,"listeners":800,"intervalos":0}
+{"modo":"sem-timer","iteracoes":1000,"rssMiB":44.1,"heapTotalMiB":5.73,"heapUsedMiB":3.08,"externalMiB":501.35,"arrayBuffersMiB":500.01,"entradas":1000,"listeners":1000,"intervalos":0}
+{"modo":"sem-timer","iteracoes":1200,"rssMiB":44.97,"heapTotalMiB":7.73,"heapUsedMiB":3.13,"externalMiB":601.35,"arrayBuffersMiB":600.01,"entradas":1200,"listeners":1200,"intervalos":0}
+{"modo":"sem-timer","iteracoes":1400,"rssMiB":47.81,"heapTotalMiB":7.73,"heapUsedMiB":3.26,"externalMiB":701.35,"arrayBuffersMiB":700.01,"entradas":1400,"listeners":1400,"intervalos":0}
+{"modo":"sem-timer","iteracoes":1600,"rssMiB":50.41,"heapTotalMiB":7.73,"heapUsedMiB":3.3,"externalMiB":801.35,"arrayBuffersMiB":800.01,"entradas":1600,"listeners":1600,"intervalos":0}
+{"modo":"sem-timer","iteracoes":1800,"rssMiB":51.16,"heapTotalMiB":7.98,"heapUsedMiB":3.6,"externalMiB":901.35,"arrayBuffersMiB":900.01,"entradas":1800,"listeners":1800,"intervalos":0}
+{"modo":"sem-timer","iteracoes":2000,"rssMiB":52.03,"heapTotalMiB":7.98,"heapUsedMiB":3.44,"externalMiB":1001.35,"arrayBuffersMiB":1000.01,"entradas":2000,"listeners":2000,"intervalos":0}

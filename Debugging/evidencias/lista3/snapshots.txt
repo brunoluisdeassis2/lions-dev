@@ -1,0 +1,2 @@
+{"quantidade":200,"arquivo":"/tmp/lions-heap-6GFGVX/200.heapsnapshot","objetos":{"Buffer":202,"Timeout":200},"callbacksRetidos":200}
+{"quantidade":2000,"arquivo":"/tmp/lions-heap-6GFGVX/2000.heapsnapshot","objetos":{"Buffer":2002,"Timeout":2000},"callbacksRetidos":2000}

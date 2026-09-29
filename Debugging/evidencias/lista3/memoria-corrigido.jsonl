@@ -1,0 +1,11 @@
+{"modo":"corrigido","iteracoes":0,"rssMiB":37.72,"heapTotalMiB":4.98,"heapUsedMiB":2.58,"externalMiB":1.07,"arrayBuffersMiB":0.01,"entradas":0,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":200,"rssMiB":63.25,"heapTotalMiB":5.73,"heapUsedMiB":2.86,"externalMiB":62.35,"arrayBuffersMiB":39.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":400,"rssMiB":95.5,"heapTotalMiB":5.73,"heapUsedMiB":2.86,"externalMiB":70.85,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":600,"rssMiB":103.56,"heapTotalMiB":5.73,"heapUsedMiB":2.86,"externalMiB":63.35,"arrayBuffersMiB":38.51,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":800,"rssMiB":105.01,"heapTotalMiB":5.23,"heapUsedMiB":2.86,"externalMiB":72.35,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":1000,"rssMiB":102.97,"heapTotalMiB":5.23,"heapUsedMiB":2.86,"externalMiB":60.85,"arrayBuffersMiB":38.51,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":1200,"rssMiB":103.92,"heapTotalMiB":5.23,"heapUsedMiB":2.86,"externalMiB":70.85,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":1400,"rssMiB":107.61,"heapTotalMiB":5.23,"heapUsedMiB":2.86,"externalMiB":60.85,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":1600,"rssMiB":112.8,"heapTotalMiB":5.23,"heapUsedMiB":2.86,"externalMiB":68.35,"arrayBuffersMiB":29.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":1800,"rssMiB":87.49,"heapTotalMiB":5.23,"heapUsedMiB":2.87,"externalMiB":39.85,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}
+{"modo":"corrigido","iteracoes":2000,"rssMiB":95.61,"heapTotalMiB":5.23,"heapUsedMiB":2.88,"externalMiB":65.85,"arrayBuffersMiB":10.01,"entradas":20,"listeners":0,"intervalos":1}

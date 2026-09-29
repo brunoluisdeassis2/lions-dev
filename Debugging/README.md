@@ -1,5 +1,11 @@
 # Debug e logs: aprender investigando
 
+**Continuação:** os exercícios **7 a 11** estão resolvidos no mesmo projeto.
+Minhas anotações e os novos comandos estão em [LISTA-3.md](LISTA-3.md).
+A API agora usa contexto por requisição e um tratador global com JSON padronizado.
+As evidências e descrições abaixo registram a primeira entrega (1 a 6);
+o formato atual dos logs da API inclui início, eventual erro e conclusão, com o mesmo ID.
+
 Esta pasta continua o repositório após as aulas 3 e 4. Os seis exercícios das
 duas listas estão resolvidos aqui. Os slides de teoria serviram de apoio;
 as atividades soltas dos slides não são exercícios adicionais desta entrega.

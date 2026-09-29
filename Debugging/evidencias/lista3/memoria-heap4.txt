@@ -1,0 +1,33 @@
+{"modo":"antes","iteracoes":0,"rssMiB":36.34,"heapTotalMiB":4.98,"heapUsedMiB":2.59,"externalMiB":1.07,"arrayBuffersMiB":0.01,"entradas":0,"listeners":0,"intervalos":0}
+{"modo":"antes","iteracoes":200,"rssMiB":39.01,"heapTotalMiB":5.23,"heapUsedMiB":2.85,"externalMiB":101.25,"arrayBuffersMiB":100.01,"entradas":200,"listeners":200,"intervalos":200}
+{"modo":"antes","iteracoes":400,"rssMiB":39.89,"heapTotalMiB":5.48,"heapUsedMiB":2.84,"externalMiB":201.25,"arrayBuffersMiB":200.01,"entradas":400,"listeners":400,"intervalos":400}
+{"modo":"antes","iteracoes":600,"rssMiB":40.76,"heapTotalMiB":5.48,"heapUsedMiB":2.95,"externalMiB":301.25,"arrayBuffersMiB":300.01,"entradas":600,"listeners":600,"intervalos":600}
+{"modo":"antes","iteracoes":800,"rssMiB":41.64,"heapTotalMiB":5.73,"heapUsedMiB":3.07,"externalMiB":401.25,"arrayBuffersMiB":400.01,"entradas":800,"listeners":800,"intervalos":800}
+{"modo":"antes","iteracoes":1000,"rssMiB":42.51,"heapTotalMiB":5.73,"heapUsedMiB":3.18,"externalMiB":501.25,"arrayBuffersMiB":500.01,"entradas":1000,"listeners":1000,"intervalos":1000}
+
+<--- Last few GCs --->
+
+[19:0x132c2210]       47 ms: Mark-Compact 3.3 (5.7) -> 3.2 (5.7) MB, 1.15 / 0.00 ms  (average mu = 0.211, current mu = 0.189) external memory pressure; scavenge might not succeed
+[19:0x132c2210]       49 ms: Mark-Compact 3.3 (5.7) -> 3.3 (5.7) MB, 1.24 / 0.00 ms  (average mu = 0.248, current mu = 0.279) external memory pressure; scavenge might not succeed
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0xb78db3 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [node]
+ 2: 0xee8300 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]
+ 3: 0xee85e7 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [node]
+ 4: 0x10fb205  [node]
+ 5: 0x10fb794 v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [node]
+ 6: 0x1112684 v8::internal::Heap::PerformGarbageCollection(v8::internal::GarbageCollector, v8::internal::GarbageCollectionReason, char const*) [node]
+ 7: 0x1112e9c v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]
+ 8: 0x1113c3a v8::internal::Heap::PreciseCollectAllGarbage(int, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]
+ 9: 0x10839de v8::internal::GCExtension::GC(v8::FunctionCallbackInfo<v8::Value> const&) [node]
+10: 0xf50bdf v8::internal::FunctionCallbackArguments::Call(v8::internal::CallHandlerInfo) [node]
+11: 0xf5144d  [node]
+12: 0xf51915 v8::internal::Builtin_HandleApiCall(int, unsigned long*, v8::internal::Isolate*) [node]
+13: 0x195e376  [node]
+
+Código de saída: -6

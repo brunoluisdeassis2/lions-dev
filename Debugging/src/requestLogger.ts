@@ -13,8 +13,8 @@ export function requestLogger(req: Request, res: Response, next: NextFunction): 
   // Guardo o instante de início com um relógio próprio para medir intervalos.
   // bigint guarda um número inteiro grande; aqui o tempo é medido em nanossegundos.
   const start = process.hrtime.bigint();
-  // Gero um ID para diferenciar esta requisição das outras.
-  const requestId = randomUUID();
+  // Reaproveito o ID do contexto; gero um novo só se este middleware for usado sozinho.
+  const requestId = req.requestId || randomUUID();
   // locals é um espaço da resposta em que guardo informações só desta requisição.
   res.locals.requestId = requestId;
   // Também envio o ID em um cabeçalho: uma informação que acompanha a resposta.
@@ -41,13 +41,12 @@ export function requestLogger(req: Request, res: Response, next: NextFunction): 
       // Se cancelou, uso null: não afirmo que o cliente recebeu uma resposta completa.
       // Se terminou, guardo o status real, como 200, 404 ou 500.
       statusCode: cancelada ? null : res.statusCode, cancelada,
-      // Se o tratamento de erros guardou uma falha em locals, incluo seus detalhes aqui.
-      erro: res.locals.erro,
     };
     // Escolho o nível do log: cancelamento é aviso (warn), falha do servidor é error
-    // e uma resposta sem falha de servidor vai como info.
+    // Se o errorHandler já registrou a falha, marco só a conclusão em info,
+    // para não repetir o registro de erro nem seu stack.
     if (cancelada) logger.warn("request cancelada", dados);
-    else if (res.statusCode >= 500) logger.error("request", dados);
+    else if (res.statusCode >= 500 && !res.locals.erroRegistrado) logger.error("request", dados);
     else logger.info("request", dados);
   }
 
@@ -63,5 +62,7 @@ export function requestLogger(req: Request, res: Response, next: NextFunction): 
   });
   // Agora deixo a requisição seguir para a rota. As funções dos eventos ficam aguardando.
   // Se eu registrasse a conclusão aqui, ainda não saberia o status final nem o tempo total.
+  // Marco também o começo para conseguir filtrar a sequência completa no exercício 9.
+  logger.info("requisição recebida", { requestId });
   next();
 }
